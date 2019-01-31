@@ -1,0 +1,6 @@
+# Ignore ID's files
+.idea/
+
+# Ignore Vagrant Files
+.vagrant/
+
