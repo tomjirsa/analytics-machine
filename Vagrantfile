@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
     core.vm.hostname = "data.analysis"
     core.vm.box = "ubuntu/bionic64"
     core.vm.network :private_network, ip: ip_address, netmask: "255.255.255.0"
-    core.vm.synced_folder "./", "/vagrant"
+    core.vm.synced_folder "./", "/vagrant", owner: "vagrant", group: "vagrant"
     core.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--name", hostname]
       v.customize ["modifyvm", :id, "--memory", memory]
@@ -48,6 +48,7 @@ Vagrant.configure("2") do |config|
       ansible.install_mode = "pip"  # Use the latest Ansible
       ansible.become = true
       ansible.playbook = "/vagrant/provisioning/provision.yml"
+      ansible.verbose = true
     end
   end
 end

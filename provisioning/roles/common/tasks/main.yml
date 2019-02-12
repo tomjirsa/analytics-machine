@@ -5,3 +5,9 @@
 
 - name: Install all tools
   include: tools.yml
+
+- name: Hardening tasks
+  include: hardening.yml
+
+- name: Create default user
+  include: users.yml
