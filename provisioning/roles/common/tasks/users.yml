@@ -1,0 +1,8 @@
+---
+
+# Setup shared file
+- name: Create link to home
+  file:
+    src: "/vagrant"
+    dest: "/home/vagrant/shared"
+    state: link

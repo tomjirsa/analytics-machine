@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
       ansible.install_mode = "pip"  # Use the latest Ansible
       ansible.become = true
       ansible.playbook = "/vagrant/provisioning/provision.yml"
-      ansible.verbose = true
+      ansible.verbose = false
     end
   end
 end

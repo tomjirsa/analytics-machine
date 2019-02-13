@@ -9,5 +9,5 @@
 - name: Hardening tasks
   include: hardening.yml
 
-- name: Create default user
+- name: User custom setting
   include: users.yml
