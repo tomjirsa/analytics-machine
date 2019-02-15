@@ -6,3 +6,4 @@
     src: "/vagrant"
     dest: "/home/vagrant/shared"
     state: link
+  ignore_errors: yes
