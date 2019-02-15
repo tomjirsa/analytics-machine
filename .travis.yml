@@ -1,0 +1,26 @@
+---
+
+dist: xenial
+
+language: python
+
+python: 3.6
+
+env:
+  - ANSIBLE_PLAYBOOK="provisioning/provision.yml"
+    ANSIBLE_INVENTORY="data.analysis ansible_host=localhost"
+
+install:
+  - pip install ansible
+
+before_script:
+  # Create Ansible inventory file
+  - echo $ANSIBLE_INVENTORY > inventory
+
+script:
+  # Check the role/playbook's syntax
+  - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --syntax-check
+
+  # Run the role/playbook with ansible-playbook
+  - ansible-playbook -i inventory $ANSIBLE_PLAYBOOK --connection=local
+dist:
