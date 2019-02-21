@@ -1,0 +1,37 @@
+---
+# main Anaconda download server
+anaconda_mirror: https://repo.continuum.io/archive
+
+# version of python (2|3)
+anaconda_python_ver: 3
+
+# anaconda version
+anaconda_ver: '2018.12'
+
+# anaconda platform
+anaconda_platform: 'Linux-x86_64'
+
+# anaconda checksums
+# https://repo.continuum.io/archive/
+anaconda_checksums:
+   Anaconda3-2018.12-Linux-x86_64.sh: md5:c9af603d89656bc89680889ef1f92623
+
+
+anaconda_parent_dir: '/usr/local'
+anaconda_link_subdir: anaconda
+
+anaconda_name: 'Anaconda{{anaconda_python_ver}}-{{anaconda_ver}}-{{anaconda_platform}}'
+anaconda_installer_sh: '{{anaconda_name}}.sh'
+anaconda_installer_url: '{{anaconda_mirror}}/{{anaconda_installer_sh}}'
+anaconda_checksum: '{{anaconda_checksums[anaconda_installer_sh]}}'
+
+anaconda_install_dir: '{{anaconda_parent_dir}}/{{anaconda_name}}'
+anaconda_link_dir: '{{anaconda_parent_dir}}/{{anaconda_link_subdir}}'
+
+anaconda_conda_bin: '{{anaconda_link_dir}}/bin/conda'
+
+anaconda_pkg_update: True
+
+# when downloading the anaconda binary it might take a while
+# don't let you less great network connection cause the role to falter
+anaconda_timeout_seconds: 600
