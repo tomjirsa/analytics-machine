@@ -36,6 +36,7 @@ Vagrant.configure("2") do |config|
     core.vm.hostname = "data.analysis"
     core.vm.box = "ubuntu/bionic64"
     core.vm.network :private_network, ip: ip_address, netmask: "255.255.255.0"
+    config.vm.network "forwarded_port", guest: 22, host: 2222
     core.vm.synced_folder "./", "/vagrant", owner: "vagrant", group: "vagrant"
     core.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--name", hostname]
@@ -44,6 +45,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--uartmode1", "disconnected"]
     end
 
+    # pro
     core.vm.provision :ansible_local do |ansible|
       ansible.install_mode = "pip"  # Use the latest Ansible
       ansible.become = true
