@@ -25,6 +25,12 @@
     dest: '{{anaconda_link_dir}}'
     state: link
 
+- name: Link Anaconda Binary
+  file:
+    src: '{{anaconda_conda_bin}}'
+    dest: /bin/conda
+    state: link
+
 - name: Update Anaconda Packages
   when: anaconda_pkg_update
   command: '{{anaconda_link_dir}}/bin/conda update -y --all'
